@@ -8,7 +8,7 @@ console.log(date.toLocaleString())
 console.log(date.toLocaleDateString())
 console.log(date.toISOString())
 console.log(date.toJSON())
-console.log(typeof date)  //Date is Object
+console.log(typeof date)  
 
 
 let myDate = new Date(2025, 0 ,1)
