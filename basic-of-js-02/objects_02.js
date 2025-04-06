@@ -67,5 +67,14 @@ console.log(Object.entries(user));
 
 console.log(user.hasOwnProperty("loggedin"));
 
+const course= {
+    coursename:"js",
+    price:200,
+    courseinstructor:"het"
+ }
 
+// de-structure
+ 
+ const {courseinstructor:instructor}=course
+ console.log(instructor);
 
