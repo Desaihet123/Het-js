@@ -102,7 +102,7 @@ console.log(fibonacciSeries(10));
 console.log(fibonacciSeries(1));
 
 
-
+// ################### Q-8 ###########
 
 
 function sumOfDigits(num) {
