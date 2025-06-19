@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bmi</title>
+</head>
+<body style="background-color: rgb(69, 84, 160);color: aliceblue;">
+    <input id="height" type="number" placeholder="enter height in meters">
+    <br>
+    <input id="weight" type="number" placeholder="enter height in kg">
+    <button id="process">check</button><br>
+    <p>Your Body Mass Index (BMI) is :</p>
+    <output id="result"></output>
+
+</body>
+<script>
+   
+   document.getElementById("process").addEventListener("click",function () {
+    height = parseFloat(document.getElementById("height").value)
+    weight = parseFloat(document.getElementById("weight").value)
+    total = weight / (height * height)    
+    document.getElementById("result").innerHTML = total
+   })
+
+</script>
+</html>

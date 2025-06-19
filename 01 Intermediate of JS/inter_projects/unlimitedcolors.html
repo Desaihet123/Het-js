@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unlimited colors</title>
+</head>
+<body>
+    <h1>Continuously changes the background color every few milliseconds (like a rainbow effect).</h1>
+</body>
+<script>
+    function changeBackgroundColor() {      
+
+        let R = Math.floor(Math.random() * 256)
+        let G = Math.floor(Math.random() * 256)
+        let B = Math.floor(Math.random() * 256)
+        
+        document.body.style.background = `rgb(${R},${G},${B})`;
+    }
+
+setInterval(changeBackgroundColor, 200);
+</script>
+</html>

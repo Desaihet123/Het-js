@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+</head>
+<body style="background-color: rgb(141, 175, 217);">
+    <h1>Digital Clock</h1>
+    <div style="background-color: rgb(162, 164, 166); color: black;" id="clock"></div>
+    <div style="background-color: rgb(162, 164, 166); color: black;" id="date"></div>    
+
+</body>
+<script>
+   
+
+   setInterval(function () { 
+
+    let time = new Date()
+    console.log(time.toLocaleTimeString());
+    document.getElementById("clock").innerHTML = time.toLocaleTimeString()
+
+    let date = new Date()
+    document.getElementById("date").innerHTML = date.toLocaleDateString()
+
+
+   },1000)
+
+</script>
+</html>

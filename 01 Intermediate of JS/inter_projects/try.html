@@ -1,0 +1,56 @@
+<!-- DOM crud - A mini app that lets you Create, Read, Update, and Delete items (e.g., a todo list). -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM crud</title>
+    <style>
+        body{
+            text-align: center;
+            justify-content: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>TO DO LIST</h1><br>
+        <input type="text" placeholder="Add your Task ..." id="inputBox">
+        <button id="addBtn">Add</button>
+    </div>
+    <ul id="list">
+        
+    </ul>
+</body>
+<script>
+
+    const input = document.getElementById('inputBox')
+    const button = document.getElementById('addBtn')
+    const taskList = document.getElementById('list')
+
+    button.addEventListener('click' , function(){
+        if (input.value == "") {
+            alert("plase write task")
+        }
+        else{
+            let li = document.createElement('li')
+            li.innerHTML = input.value
+
+            let deletBtn = document.createElement('button')
+            deletBtn.textContent = "Delet Task"
+            deletBtn.onclick = () => li.remove()
+            li.appendChild(deletBtn)
+            deletBtn.style.marginLeft = '20px'
+
+            taskList.appendChild(li)
+            input.value = ""
+        }
+    })
+
+
+
+
+</script>
+</html>

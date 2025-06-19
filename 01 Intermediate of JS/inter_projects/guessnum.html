@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guess the num</title>
+</head>
+<body style="background-color: rgb(77, 131, 231);color: rgb(255, 255, 255);">
+    <h1> guess the number </h1><br>
+    <h2>the number range is : 1 - 100</h2><br>
+    <input id="usrgus" type="number" min="1" max="100" placeholder="enter the num"><br>
+    <button id="submit">check</button><br>
+    <h1 id="output"></h1>
+</body>
+<script>
+    let randnum = Math.floor(Math.random()*100)+1
+
+    document.querySelector("#submit").addEventListener("click",function(){
+          let usrnum = parseFloat(document.getElementById("usrgus").value)
+
+
+        if (randnum > usrnum) {
+            document.getElementById("output").innerHTML = "too low"            
+        }
+         if (randnum < usrnum) {
+            document.getElementById("output").innerHTML = "too high"            
+        }
+          if (randnum == usrnum) {
+            document.getElementById("output").innerHTML = "Guess is correct"            
+        }
+           
+    })
+
+    document.getElementById("usrgus").addEventListener("keypress",function(){
+        if(event.key === "Enter"){
+            document.getElementById("submit").click()
+        }
+    })
+
+
+</script>
+</html>

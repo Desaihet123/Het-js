@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Circle</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .circle {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transition: transform 0.04s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+    <script>
+        const circle = document.querySelector('.circle');
+
+        document.addEventListener('mousemove', (e) => {
+            circle.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+        });
+    </script>
+</body>
+</html>

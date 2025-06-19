@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color change</title>
+</head>
+<body id="bodyid" style="background-color: black;color: #ffffff;">
+    <h1 id="h1id">before</h1>
+   <button id="btnid">click</button>
+</body>
+<script>
+    document.getElementById("btnid").addEventListener("click",function(){
+     document.body.style.backgroundColor = colors()
+     document.getElementById("h1id").innerHTML="After"   
+    })
+    function colors() {
+         const color = ["#FFC1CC", "#AAF0D1", "#FFDAB9", "#DCAE96", "#E2725B", "#B2BEB5","#D8BFD8"]
+         return color[Math.floor(Math.random()*color.length)]
+    }
+</script>
+</html>
