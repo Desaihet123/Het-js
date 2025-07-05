@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub API Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 320px;
+      width: 100%;
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #007bff;
+      margin-bottom: 20px;
+    }
+
+    .card h1 {
+      font-size: 20px;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    #followers, #following {
+      font-size: 16px;
+      color: #555;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>My GitHub Details</h1>
+    <div id="imgbox"></div>
+    <h1 id="username"></h1>
+    <h1 id="followers"></h1>
+    <h1 id="following"></h1>
+  </div>
+
+</body>
+<script>
+    const requesturl = "https://api.github.com/users/ashoksuthar-str"
+    const xhr = new XMLHttpRequest()
+    xhr.open("GET", requesturl)
+    let followers = document.getElementById("followers")
+    let following = document.getElementById("following")
+    let name = document.getElementById("username")
+    
+    
+    xhr.onreadystatechange = function (){
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText)
+            console.log(data);
+            
+            // console.log(data.followers);
+            // console.log(data.following);
+            followers.innerHTML = `Followers :${data.followers}`
+            following.innerHTML = `Following :${data.following}`
+            console.log(data.avatar_url);
+            name.innerHTML = `Name : ${data.login}`
+            
+            imgbox.innerHTML = `<img src="${data.avatar_url}" alt="error">`
+        }
+    }
+    xhr.send()
+
+</script>
+</html>
