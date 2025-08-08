@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Book Search</title>
+  <style>
+    .book {
+      margin: 5px 0;
+      padding: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Search book here</h2>
+  <input type="text" id="searchInput" placeholder="Type book name..." />
+  <div id="results"></div>
+
+  <script>
+    class BookSearch {
+      constructor() {
+        this.input = document.getElementById("searchInput");
+        this.resultsBox = document.getElementById("results");
+        this.timer = null;
+
+        this.input.addEventListener("input", () => this.debounceSearch());
+      }
+
+      debounceSearch() {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => this.searchBooks(), 300);
+      }
+
+      async searchBooks() {
+        const query = this.input.value.trim();
+        if (!query) {
+          this.resultsBox.innerHTML = "";
+          return;
+        }
+
+        const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`;
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+          this.showResults(data.docs.slice(0, 10));
+        } catch (error) {
+          this.resultsBox.innerHTML = "Error fetching results.";
+          console.error(error);
+        }
+      }
+
+      showResults(books) {
+        this.resultsBox.innerHTML = "";
+
+        if (books.length === 0) {
+          this.resultsBox.innerHTML = "No results found.";
+          return;
+        }
+
+        books.forEach(book => {
+          const div = document.createElement("div");
+          div.className = "book";
+          div.innerHTML = `<strong>${book.title}</strong> - ${book.author_name ? book.author_name.join(", ") : "Unknown author"}`;
+          this.resultsBox.appendChild(div);
+        });
+      }
+    }
+
+    new BookSearch();
+  </script>
+
+</body>
+</html>
